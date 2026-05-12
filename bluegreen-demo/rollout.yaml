@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+
+metadata:
+  name: apache-bluegreen
+
+spec:
+  replicas: 4
+
+  selector:
+    matchLabels:
+      app: apache
+
+  strategy:
+    blueGreen:
+      activeService: apache-active
+      previewService: apache-preview
+      autoPromotionEnabled: false
+
+  template:
+    metadata:
+      labels:
+        app: apache
+
+    spec:
+      containers:
+      - name: apache
+        image: httpd:2.4
+
+
+        ports:
+        - containerPort: 80
+
