@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: 'https://github.com/kundraparul/argocd-demos.git'
     targetRevision: HEAD
-    path: rollout-demo-2
+    path: rollout-demo-3
 
   destination:
     server: 'https://kubernetes.default.svc'
